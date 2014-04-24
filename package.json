@@ -1,9 +1,9 @@
 {
-  "name": "imagemin-pngquant",
+  "name": "imagemin-svgo",
   "version": "0.1.0",
-  "description": "pngquant image-min plugin",
+  "description": "svgo image-min plugin",
   "license": "MIT",
-  "repository": "kevva/imagemin-pngquant",
+  "repository": "kevva/imagemin-svgo",
   "author": {
     "name": "Kevin Mårtensson",
     "email": "kevinmartensson@gmail.com",
@@ -28,7 +28,6 @@
     "svg"
   ],
   "dependencies": {
-    "image-type": "^0.1.1",
     "is-svg": "^0.1.1",
     "svgo": "^0.4.4"
   },
