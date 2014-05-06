@@ -22,6 +22,20 @@ var imagemin = new Imagemin()
 imagemin.optimize();
 ```
 
+## Options
+
+### plugins
+
+Type: `Array`  
+Default: `undefined`
+
+Customize which SVGO [plugins](https://github.com/svg/svgo/tree/master/plugins) to use.
+
+```js
+var imagemin = new Imagemin()
+    .use(svgo([{ removeViewBox: false, removeEmptyAttrs: false }]));
+```
+
 ## License
 
-[MIT License](http://en.wikipedia.org/wiki/MIT_License) © [Kevin Mårtensson](https://github.com/kevva)
+MIT © [Kevin Mårtensson](https://github.com/kevva)
