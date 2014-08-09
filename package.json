@@ -1,6 +1,6 @@
 {
   "name": "imagemin-svgo",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "svgo image-min plugin",
   "license": "MIT",
   "repository": "kevva/imagemin-svgo",
