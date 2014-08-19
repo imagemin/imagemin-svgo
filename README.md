@@ -2,11 +2,13 @@
 
 > svgo image-min plugin
 
+
 ## Install
 
-```bash
+```sh
 $ npm install --save imagemin-svgo
 ```
+
 
 ## Usage
 
@@ -22,12 +24,13 @@ var imagemin = new Imagemin()
 imagemin.optimize();
 ```
 
+
 ## Options
 
 ### plugins
 
 Type: `Array`  
-Default: `undefined`
+Default: `[]`
 
 Customize which SVGO [plugins](https://github.com/svg/svgo/tree/master/plugins) to use.
 
@@ -35,6 +38,7 @@ Customize which SVGO [plugins](https://github.com/svg/svgo/tree/master/plugins) 
 var imagemin = new Imagemin()
     .use(svgo({ plugins: [{ removeViewBox: false, removeEmptyAttrs: false }] }));
 ```
+
 
 ## License
 
