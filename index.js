@@ -21,7 +21,8 @@ module.exports = function (opts) {
         var svgo = new SVGO(opts);
 
         svgo.optimize(file.contents.toString('utf8'), function (res) {
-            file.contents = new Buffer(res.data);
+            res.error && console.log('Invalid SVG:', res.error);
+            file.contents = new Buffer(res.data || '');
             cb();
         });
     };
