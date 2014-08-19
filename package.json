@@ -3,7 +3,7 @@
   "version": "0.1.1",
   "description": "svgo image-min plugin",
   "license": "MIT",
-  "repository": "kevva/imagemin-svgo",
+  "repository": "imagemin/imagemin-svgo",
   "author": {
     "name": "Kevin Mårtensson",
     "email": "kevinmartensson@gmail.com",

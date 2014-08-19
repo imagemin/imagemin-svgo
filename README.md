@@ -1,4 +1,4 @@
-# imagemin-svgo [![Build Status](https://travis-ci.org/kevva/imagemin-svgo.svg?branch=master)](https://travis-ci.org/kevva/imagemin-svgo)
+# imagemin-svgo [![Build Status](https://travis-ci.org/imagemin/imagemin-svgo.svg?branch=master)](https://travis-ci.org/imagemin/imagemin-svgo)
 
 > svgo image-min plugin
 
@@ -42,4 +42,4 @@ var imagemin = new Imagemin()
 
 ## License
 
-MIT © [Kevin Mårtensson](https://github.com/kevva)
+MIT © [imagemin](https://github.com/imagemin)
