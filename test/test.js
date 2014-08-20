@@ -23,3 +23,15 @@ test('optimize a SVG', function (t) {
 		});
 	});
 });
+
+test('error on corrupt SVG', function (t) {
+	t.plan(1);
+
+	var imagemin = new Imagemin()
+		.src(path.join(__dirname, 'fixtures/test-corrupt.svg'))
+		.use(svgo());
+
+	imagemin.optimize(function (err) {
+		t.assert(err);
+	});
+});
