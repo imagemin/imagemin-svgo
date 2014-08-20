@@ -21,14 +21,13 @@ module.exports = function (opts) {
 
 		var svgo = new SVGO({ plugins: opts.plugins || [] });
 
-		svgo.optimize(file.contents.toString('utf8'), function (res) {
-			if (res.error) {
-				cb(res.error);
-				return;
-			}
-
-			file.contents = new Buffer(res.data || file.contents.toString('utf8'));
-			cb();
-		});
+		try {
+			svgo.optimize(file.contents.toString('utf8'), function (res) {
+				file.contents = new Buffer(res.data);
+				cb();
+			});
+		} catch (err) {
+			cb(err);
+		}
 	};
 };
