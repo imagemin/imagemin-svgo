@@ -1,4 +1,6 @@
-# imagemin-svgo [![Build Status](https://travis-ci.org/imagemin/imagemin-svgo.svg?branch=master)](https://travis-ci.org/imagemin/imagemin-svgo)
+# imagemin-svgo [![Build Status](http://img.shields.io/travis/imagemin/imagemin-svgo.svg?style=flat)](https://travis-ci.org/imagemin/imagemin-svgo) [![Build status](https://ci.appveyor.com/api/projects/status/esa7m3u8bcol1mtr)](https://ci.appveyor.com/project/ShinnosukeWatanabe/imagemin-svgo)
+
+
 
 > svgo image-min plugin
 
