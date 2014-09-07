@@ -2,6 +2,7 @@
 
 var fs = require('fs');
 var Imagemin = require('imagemin');
+var isSvg = require('is-svg');
 var path = require('path');
 var svgo = require('../');
 var test = require('ava');
@@ -19,7 +20,7 @@ test('optimize a SVG', function (t) {
 		fs.stat(imagemin.src(), function (err, stats) {
 			t.assert(!err);
 			t.assert(file.contents.length < stats.size);
-			t.assert(file.contents.length > 0);
+			t.assert(isSvg(file.contents));
 		});
 	});
 });
