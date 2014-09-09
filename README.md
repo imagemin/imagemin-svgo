@@ -1,8 +1,6 @@
 # imagemin-svgo [![Build Status](http://img.shields.io/travis/imagemin/imagemin-svgo.svg?style=flat)](https://travis-ci.org/imagemin/imagemin-svgo) [![Build status](https://ci.appveyor.com/api/projects/status/esa7m3u8bcol1mtr)](https://ci.appveyor.com/project/ShinnosukeWatanabe/imagemin-svgo)
 
-
-
-> svgo image-min plugin
+> svgo imagemin plugin
 
 
 ## Install
@@ -15,15 +13,34 @@ $ npm install --save imagemin-svgo
 ## Usage
 
 ```js
-var Imagemin = require('image-min');
+var Imagemin = require('imagemin');
 var svgo = require('imagemin-svgo');
 
 var imagemin = new Imagemin()
-    .src('foo.svg')
-    .dest('foo-optimized.svg')
-    .use(svgo());
+	.src('images/*.svg')
+	.dest('build/images')
+	.use(svgo());
 
-imagemin.optimize();
+imagemin.run(function (err, files) {
+	if (err) {
+		throw err;
+	}
+
+	console.log('Files optimized successfully!'); 
+});
+```
+
+You can also use this plugin with [gulp](http://gulpjs.com):
+
+```js
+var gulp = require('gulp');
+var svgo = require('imagemin-svgo');
+
+gulp.task('default', function () {
+	return gulp.src('images/*.svg')
+		.pipe(svgo())
+		.pipe(gulp.dest('build/images'));
+});
 ```
 
 
@@ -38,7 +55,7 @@ Customize which SVGO [plugins](https://github.com/svg/svgo/tree/master/plugins) 
 
 ```js
 var imagemin = new Imagemin()
-    .use(svgo({ plugins: [{ removeViewBox: false, removeEmptyAttrs: false }] }));
+	.use(svgo({ plugins: [{ removeViewBox: false, removeEmptyAttrs: false }] }));
 ```
 
 

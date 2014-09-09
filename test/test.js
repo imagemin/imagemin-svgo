@@ -1,38 +1,47 @@
 'use strict';
 
+var File = require('vinyl');
 var fs = require('fs');
-var Imagemin = require('imagemin');
 var isSvg = require('is-svg');
 var path = require('path');
 var svgo = require('../');
 var test = require('ava');
 
 test('optimize a SVG', function (t) {
-	t.plan(4);
+	t.plan(3);
 
-	var imagemin = new Imagemin()
-		.src(path.join(__dirname, 'fixtures/test.svg'))
-		.use(svgo());
-
-	imagemin.optimize(function (err, file) {
+	fs.readFile(path.join(__dirname, 'fixtures/test.svg'), function (err, buf) {
 		t.assert(!err);
 
-		fs.stat(imagemin.src(), function (err, stats) {
-			t.assert(!err);
-			t.assert(file.contents.length < stats.size);
-			t.assert(isSvg(file.contents));
+		var stream = svgo();
+		var file = new File({
+			contents: buf
 		});
+
+		stream.on('data', function (data) {
+			t.assert(data.contents.length < buf.length);
+			t.assert(isSvg(data.contents));
+		});
+
+		stream.end(file);
 	});
 });
 
 test('error on corrupt SVG', function (t) {
 	t.plan(1);
 
-	var imagemin = new Imagemin()
-		.src(path.join(__dirname, 'fixtures/test-corrupt.svg'))
-		.use(svgo());
+	fs.readFile(path.join(__dirname, 'fixtures/test-corrupt.svg'), function (err, buf) {
+		t.assert(!err);
 
-	imagemin.optimize(function (err) {
-		t.assert(err);
+		var stream = svgo();
+		var file = new File({
+			contents: buf
+		});
+
+		stream.on('error', function (err) {
+			t.assert(err);
+		});
+
+		stream.end(file);
 	});
 });

@@ -2,9 +2,10 @@
 
 var isSvg = require('is-svg');
 var SVGO = require('svgo');
+var through = require('through2');
 
 /**
- * svgo image-min plugin
+ * svgo imagemin plugin
  *
  * @param {Object} opts
  * @api public
@@ -13,9 +14,19 @@ var SVGO = require('svgo');
 module.exports = function (opts) {
 	opts = opts || {};
 
-	return function (file, imagemin, cb) {
+	return through.obj(function (file, enc, cb) {
+		if (file.isNull()) {
+			cb(null, file);
+			return;
+		}
+
+		if (file.isStream()) {
+			cb(new Error('Streaming is not supported'));
+			return;
+		}
+
 		if (!isSvg(file.contents)) {
-			cb();
+			cb(null, file);
 			return;
 		}
 
@@ -24,10 +35,10 @@ module.exports = function (opts) {
 		try {
 			svgo.optimize(file.contents.toString('utf8'), function (res) {
 				file.contents = new Buffer(res.data);
-				cb();
+				cb(null, file);
 			});
 		} catch (err) {
 			cb(err);
 		}
-	};
+	});
 };
