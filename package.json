@@ -1,6 +1,6 @@
 {
   "name": "imagemin-svgo",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "svgo imagemin plugin",
   "license": "MIT",
   "repository": "imagemin/imagemin-svgo",
@@ -34,7 +34,6 @@
   },
   "devDependencies": {
     "ava": "0.0.4",
-    "imagemin": "^1.0.2",
     "vinyl": "^0.4.3"
   }
 }
