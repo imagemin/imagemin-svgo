@@ -1,25 +1,22 @@
 'use strict';
 
-var File = require('vinyl');
-var fs = require('fs');
 var isSvg = require('is-svg');
 var path = require('path');
+var read = require('vinyl-file').read;
 var svgo = require('../');
 var test = require('ava');
 
 test('optimize a SVG', function (t) {
 	t.plan(3);
 
-	fs.readFile(path.join(__dirname, 'fixtures/test.svg'), function (err, buf) {
+	read(path.join(__dirname, 'fixtures/test.svg'), function (err, file) {
 		t.assert(!err);
 
 		var stream = svgo();
-		var file = new File({
-			contents: buf
-		});
+		var size = file.contents.length;
 
 		stream.on('data', function (data) {
-			t.assert(data.contents.length < buf.length);
+			t.assert(data.contents.length < size);
 			t.assert(isSvg(data.contents));
 		});
 
@@ -32,16 +29,14 @@ test('optimize a SVG using ctor', function (t) {
 
 	var Svgo = svgo.ctor();
 
-	fs.readFile(path.join(__dirname, 'fixtures/test.svg'), function (err, buf) {
+	read(path.join(__dirname, 'fixtures/test.svg'), function (err, file) {
 		t.assert(!err);
 
 		var stream = new Svgo();
-		var file = new File({
-			contents: buf
-		});
+		var size = file.contents.length;
 
 		stream.on('data', function (data) {
-			t.assert(data.contents.length < buf.length);
+			t.assert(data.contents.length < size);
 			t.assert(isSvg(data.contents));
 		});
 
@@ -52,13 +47,10 @@ test('optimize a SVG using ctor', function (t) {
 test('error on corrupt SVG', function (t) {
 	t.plan(1);
 
-	fs.readFile(path.join(__dirname, 'fixtures/test-corrupt.svg'), function (err, buf) {
+	read(path.join(__dirname, 'fixtures/test.svg'), function (err, file) {
 		t.assert(!err);
 
 		var stream = svgo();
-		var file = new File({
-			contents: buf
-		});
 
 		stream.on('error', function (err) {
 			t.assert(err);
