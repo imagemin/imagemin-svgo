@@ -10,7 +10,7 @@ test('optimize a SVG', function (t) {
 	t.plan(3);
 
 	read(path.join(__dirname, 'fixtures/test.svg'), function (err, file) {
-		t.assert(!err);
+		t.assert(!err, err);
 
 		var stream = svgo();
 		var size = file.contents.length;
@@ -30,7 +30,7 @@ test('optimize a SVG using ctor', function (t) {
 	var Svgo = svgo.ctor();
 
 	read(path.join(__dirname, 'fixtures/test.svg'), function (err, file) {
-		t.assert(!err);
+		t.assert(!err, err);
 
 		var stream = new Svgo();
 		var size = file.contents.length;
@@ -48,7 +48,7 @@ test('error on corrupt SVG', function (t) {
 	t.plan(1);
 
 	read(path.join(__dirname, 'fixtures/test.svg'), function (err, file) {
-		t.assert(!err);
+		t.assert(!err, err);
 
 		var stream = svgo();
 
