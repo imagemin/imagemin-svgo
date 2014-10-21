@@ -27,6 +27,28 @@ test('optimize a SVG', function (t) {
 	});
 });
 
+test('optimize a SVG using ctor', function (t) {
+	t.plan(3);
+
+	var Svgo = svgo.ctor();
+
+	fs.readFile(path.join(__dirname, 'fixtures/test.svg'), function (err, buf) {
+		t.assert(!err);
+
+		var stream = new Svgo();
+		var file = new File({
+			contents: buf
+		});
+
+		stream.on('data', function (data) {
+			t.assert(data.contents.length < buf.length);
+			t.assert(isSvg(data.contents));
+		});
+
+		stream.end(file);
+	});
+});
+
 test('error on corrupt SVG', function (t) {
 	t.plan(1);
 
