@@ -38,7 +38,7 @@ var svgo = require('imagemin-svgo');
 
 gulp.task('default', function () {
 	return gulp.src('images/*.svg')
-		.pipe(svgo())
+		.pipe(svgo()())
 		.pipe(gulp.dest('build/images'));
 });
 ```
