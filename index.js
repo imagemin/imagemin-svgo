@@ -34,7 +34,7 @@ module.exports = function (opts) {
 
 		try {
 			svgo.optimize(file.contents.toString('utf8'), function (res) {
-				res.data.replace(/&(?!amp;)/g, '&amp;');
+				res.data = res.data.replace(/&(?!amp;)/g, '&amp;');
 				file.contents = new Buffer(res.data);
 				cb(null, file);
 			});
