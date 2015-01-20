@@ -38,7 +38,12 @@ module.exports = function (opts) {
 					res.data = res.data.replace(/&(?!amp;)/g, '&amp;');
 				}
 
-				file.contents = new Buffer(res.data);
+				res.data = new Buffer(res.data);
+
+				if (res.data.length < file.contents.length) {
+					file.contents = res.data;
+				}
+
 				cb(null, file);
 			});
 		} catch (err) {
