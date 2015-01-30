@@ -35,7 +35,7 @@
     "through2": "^0.6.1"
   },
   "devDependencies": {
-    "ava": "0.0.4",
+    "ava": "^0.0.4",
     "vinyl-file": "^1.1.0"
   }
 }

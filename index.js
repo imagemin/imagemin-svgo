@@ -4,13 +4,6 @@ var isSvg = require('is-svg');
 var SVGO = require('svgo');
 var through = require('through2');
 
-/**
- * svgo imagemin plugin
- *
- * @param {Object} opts
- * @api public
- */
-
 module.exports = function (opts) {
 	opts = opts || {};
 
