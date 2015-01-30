@@ -30,9 +30,9 @@ module.exports = function (opts) {
 			return;
 		}
 
-		var svgo = new SVGO({ plugins: opts.plugins || [] });
-
 		try {
+			var svgo = new SVGO({ plugins: opts.plugins || [] });
+
 			svgo.optimize(file.contents.toString('utf8'), function (res) {
 				if (res.data && res.data.length) {
 					res.data = res.data.replace(/&(?!amp;)/g, '&amp;');
