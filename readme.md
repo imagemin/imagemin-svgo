@@ -46,6 +46,13 @@ gulp.task('default', function () {
 
 ## Options
 
+### multipass
+
+Type: `Boolean`  
+Default: `false`
+
+Optimize image multiple times until it's fully optimized.
+
 ### plugins
 
 Type: `Array`  
