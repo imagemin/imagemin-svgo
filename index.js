@@ -7,7 +7,7 @@ var through = require('through2');
 module.exports = function (opts) {
 	opts = opts || {};
 
-	return through.ctor({ objectMode: true }, function (file, enc, cb) {
+	return through.ctor({objectMode: true}, function (file, enc, cb) {
 		if (file.isNull()) {
 			cb(null, file);
 			return;

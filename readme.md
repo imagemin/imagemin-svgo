@@ -62,7 +62,7 @@ Customize which SVGO [plugins](https://github.com/svg/svgo/tree/master/plugins) 
 
 ```js
 var imagemin = new Imagemin()
-	.use(svgo({ plugins: [{ removeViewBox: false }, { removeEmptyAttrs: false }] }));
+	.use(svgo({plugins: [{removeViewBox: false}, {removeEmptyAttrs: false}]}));
 ```
 
 
