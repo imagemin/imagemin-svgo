@@ -30,6 +30,10 @@ module.exports = function (opts) {
 			});
 
 			svgo.optimize(file.contents.toString('utf8'), function (res) {
+				if (!res.data) {
+					cb(null, file);
+				}
+
 				if (res.data && res.data.length) {
 					res.data = res.data.replace(/&(?!amp;)/g, '&amp;');
 				}
