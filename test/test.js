@@ -1,10 +1,10 @@
 'use strict';
 
-var isSvg = require('is-svg');
 var path = require('path');
+var isSvg = require('is-svg');
 var read = require('vinyl-file').read;
-var svgo = require('../');
 var test = require('ava');
+var imageminSvgo = require('../');
 
 test('optimize a SVG', function (t) {
 	t.plan(3);
@@ -12,11 +12,11 @@ test('optimize a SVG', function (t) {
 	read(path.join(__dirname, 'fixtures/test.svg'), function (err, file) {
 		t.assert(!err, err);
 
-		var stream = svgo()();
+		var stream = imageminSvgo()();
 		var size = file.contents.length;
 
 		stream.on('data', function (data) {
-			t.assert(data.contents.length < size);
+			t.assert(data.contents.length < size, data.contents.length);
 			t.assert(isSvg(data.contents));
 		});
 
@@ -30,7 +30,7 @@ test('error on corrupt SVG', function (t) {
 	read(path.join(__dirname, 'fixtures/test.svg'), function (err, file) {
 		t.assert(!err, err);
 
-		var stream = svgo()();
+		var stream = imageminSvgo()();
 
 		stream.on('error', function (err) {
 			t.assert(err);

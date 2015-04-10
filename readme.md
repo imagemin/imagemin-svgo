@@ -5,7 +5,7 @@
 
 ## Install
 
-```sh
+```
 $ npm install --save imagemin-svgo
 ```
 
@@ -14,55 +14,50 @@ $ npm install --save imagemin-svgo
 
 ```js
 var Imagemin = require('imagemin');
-var svgo = require('imagemin-svgo');
+var imageminSvgo = require('imagemin-svgo');
 
-var imagemin = new Imagemin()
+new Imagemin()
 	.src('images/*.svg')
 	.dest('build/images')
-	.use(svgo());
-
-imagemin.run(function (err, files) {
-	if (err) {
-		throw err;
-	}
-
-	console.log('Files optimized successfully!'); 
-});
+	.use(imageminSvgo())
+	.run();
 ```
 
 You can also use this plugin with [gulp](http://gulpjs.com):
 
 ```js
 var gulp = require('gulp');
-var svgo = require('imagemin-svgo');
+var imageminSvgo = require('imagemin-svgo');
 
 gulp.task('default', function () {
 	return gulp.src('images/*.svg')
-		.pipe(svgo()())
+		.pipe(imageminSvgo()())
 		.pipe(gulp.dest('build/images'));
 });
 ```
 
 
-## Options
+## API
 
-### multipass
+### imageminSvgo(options)
 
-Type: `Boolean`  
+#### options.multipass
+
+Type: `boolean`  
 Default: `false`
 
 Optimize image multiple times until it's fully optimized.
 
-### plugins
+#### options.plugins
 
-Type: `Array`  
+Type: `array`  
 Default: `[]`
 
 Customize which SVGO [plugins](https://github.com/svg/svgo/tree/master/plugins) to use.
 
 ```js
 var imagemin = new Imagemin()
-	.use(svgo({plugins: [{removeViewBox: false}, {removeEmptyAttrs: false}]}));
+	.use(imageminSvgo({plugins: [{removeViewBox: false}, {removeEmptyAttrs: false}]}));
 ```
 
 
