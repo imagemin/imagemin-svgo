@@ -45,6 +45,7 @@ module.exports = function (opts) {
 				cb(null, file);
 			});
 		} catch (err) {
+			err.fileName = file.path;
 			cb(err);
 		}
 	});

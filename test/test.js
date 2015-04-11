@@ -25,15 +25,16 @@ test('optimize a SVG', function (t) {
 });
 
 test('error on corrupt SVG', function (t) {
-	t.plan(1);
+	t.plan(3);
 
-	read(path.join(__dirname, 'fixtures/test.svg'), function (err, file) {
+	read(path.join(__dirname, 'fixtures/test-corrupt.svg'), function (err, file) {
 		t.assert(!err, err);
 
 		var stream = imageminSvgo()();
 
 		stream.on('error', function (err) {
 			t.assert(err);
+			t.assert(path.basename(err.fileName) === 'test-corrupt.svg', err.fileName);
 		});
 
 		stream.end(file);
