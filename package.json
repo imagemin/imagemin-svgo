@@ -30,12 +30,12 @@
     "svgo"
   ],
   "dependencies": {
-    "is-svg": "^1.0.0",
-    "svgo": "^0.5.0",
-    "through2": "^0.6.1"
+    "is-svg": "^1.1.1",
+    "svgo": "^0.5.2",
+    "through2": "^0.6.5"
   },
   "devDependencies": {
     "ava": "^0.0.4",
-    "vinyl-file": "^1.1.0"
+    "vinyl-file": "^1.1.1"
   }
 }
