@@ -24,10 +24,7 @@ module.exports = function (opts) {
 		}
 
 		try {
-			var svgo = new SVGO({
-				multipass: opts.multipass || false,
-				plugins: opts.plugins || []
-			});
+			var svgo = new SVGO(opts);
 
 			svgo.optimize(file.contents.toString('utf8'), function (res) {
 				if (!res.data || !res.data.length) {

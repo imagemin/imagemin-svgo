@@ -41,24 +41,11 @@ gulp.task('default', function () {
 
 ### imageminSvgo(options)
 
-#### options.multipass
+#### options
 
-Type: `boolean`  
-Default: `false`
+Type: `object`
 
-Optimize image multiple times until it's fully optimized.
-
-#### options.plugins
-
-Type: `array`  
-Default: `[]`
-
-Customize which SVGO [plugins](https://github.com/svg/svgo/tree/master/plugins) to use.
-
-```js
-var imagemin = new Imagemin()
-	.use(imageminSvgo({plugins: [{removeViewBox: false}, {removeEmptyAttrs: false}]}));
-```
+Pass options to [svgo](https://github.com/svg/svgo).
 
 
 ## License
