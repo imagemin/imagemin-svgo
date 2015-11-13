@@ -28,7 +28,6 @@ module.exports = function (opts) {
 
 			svgo.optimize(file.contents.toString('utf8'), function (res) {
 				if (!res.data || !res.data.length) {
-					cb(null, file);
 					return;
 				}
 
@@ -38,12 +37,13 @@ module.exports = function (opts) {
 				if (res.data.length < file.contents.length) {
 					file.contents = res.data;
 				}
-
-				cb(null, file);
 			});
 		} catch (err) {
 			err.fileName = file.path;
 			cb(err);
+			return;
 		}
+
+		cb(null, file);
 	});
 };
