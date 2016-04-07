@@ -37,7 +37,7 @@ test('error on corrupt SVG', t => {
 	const stream = imageminSvgo()();
 
 	stream.on('error', err => {
-		t.ok(err);
+		t.truthy(err);
 		t.is(err.fileName, path.normalize('/corrupt.svg'));
 	});
 
