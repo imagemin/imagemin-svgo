@@ -24,7 +24,7 @@ imagemin('images/*.svg', 'build/images', {use: [imageminSvgo()]}).then(() => {
 
 ## API
 
-### imageminSvgo(options)(buffer)
+### imageminSvgo([options])(buffer)
 
 Returns a promise for a buffer.
 
