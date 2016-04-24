@@ -1,48 +1,28 @@
-import path from 'path';
 import test from 'ava';
 import imageminSvgo from './';
-import Vinyl from 'vinyl';
 
 test('optimize a SVG', t => {
 	t.plan(1);
 
-	const stream = imageminSvgo()();
-
-	stream.on('data', data => {
-		t.is(data.contents.toString(), '<svg><style></style></svg>');
+	imageminSvgo()('<svg><style> circle {} </style></svg>').then(data => {
+		t.is(data, '<svg><style></style></svg>');
 	});
-
-	stream.end(new Vinyl({contents: new Buffer('<svg><style> circle {} </style></svg>')}));
 });
 
 test('support SVGO options', t => {
 	t.plan(1);
 
-	const stream = imageminSvgo({
-		plugins: [{
-			removeStyleElement: true
-		}]
-	})();
-
-	stream.on('data', data => {
-		t.is(data.contents.toString(), '<svg/>');
+	imageminSvgo({plugins: [{
+		removeStyleElement: true
+	}]})('<svg><style>  circle {} </style></svg>').then(data => {
+		t.is(data, '<svg/>');
 	});
-
-	stream.end(new Vinyl({contents: new Buffer('<svg><style>  circle {} </style></svg>')}));
 });
 
 test('error on corrupt SVG', t => {
-	t.plan(2);
+	t.plan(1);
 
-	const stream = imageminSvgo()();
-
-	stream.on('error', err => {
+	imageminSvgo()('<svg><style> circle {} </style></svg>').catch(err => {
 		t.truthy(err);
-		t.is(err.fileName, path.normalize('/corrupt.svg'));
 	});
-
-	stream.end(new Vinyl({
-		path: path.normalize('/corrupt.svg'),
-		contents: new Buffer('<svg>style><</style></svg>')
-	}));
 });

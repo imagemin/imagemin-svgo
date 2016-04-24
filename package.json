@@ -21,7 +21,7 @@
     }
   ],
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=4"
   },
   "scripts": {
     "test": "xo && ava"
@@ -42,12 +42,13 @@
   ],
   "dependencies": {
     "is-svg": "^1.0.0",
-    "svgo": "^0.6.0",
-    "through2": "^2.0.0"
+    "svgo": "^0.6.0"
   },
   "devDependencies": {
     "ava": "*",
-    "vinyl": "^1.1.0",
     "xo": "*"
+  },
+  "xo": {
+    "esnext": true
   }
 }
