@@ -16,7 +16,7 @@ $ npm install --save imagemin-svgo
 const imagemin = require('imagemin');
 const imageminSvgo = require('imagemin-svgo');
 
-imagemin('images/*.svg', 'build/images', {use: [imageminSvgo()]}).then(() => {
+imagemin(['images/*.svg'], 'build/images', {use: [imageminSvgo()]}).then(() => {
 	console.log('Images optimized');
 });
 ```
