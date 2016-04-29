@@ -1,48 +1,24 @@
-import path from 'path';
 import test from 'ava';
-import imageminSvgo from './';
-import Vinyl from 'vinyl';
+import m from './';
 
-test('optimize a SVG', t => {
-	t.plan(1);
-
-	const stream = imageminSvgo()();
-
-	stream.on('data', data => {
-		t.is(data.contents.toString(), '<svg><style></style></svg>');
-	});
-
-	stream.end(new Vinyl({contents: new Buffer('<svg><style> circle {} </style></svg>')}));
+test('optimize a SVG', async t => {
+	t.is(await m()('<svg><style> circle {} </style></svg>'), '<svg><style></style></svg>');
 });
 
-test('support SVGO options', t => {
-	t.plan(1);
-
-	const stream = imageminSvgo({
+test('support SVGO options', async t => {
+	const data = await m({
 		plugins: [{
 			removeStyleElement: true
 		}]
-	})();
+	})('<svg><style> circle {} </style></svg>');
 
-	stream.on('data', data => {
-		t.is(data.contents.toString(), '<svg/>');
-	});
-
-	stream.end(new Vinyl({contents: new Buffer('<svg><style>  circle {} </style></svg>')}));
+	t.is(data, '<svg/>');
 });
 
-test('error on corrupt SVG', t => {
-	t.plan(2);
+test('error on corrupt SVG', async t => {
+	t.throws(m()('<svg>style><</style></svg>'), /Error in parsing SVG/);
+});
 
-	const stream = imageminSvgo()();
-
-	stream.on('error', err => {
-		t.truthy(err);
-		t.is(err.fileName, path.normalize('/corrupt.svg'));
-	});
-
-	stream.end(new Vinyl({
-		path: path.normalize('/corrupt.svg'),
-		contents: new Buffer('<svg>style><</style></svg>')
-	}));
+test('ignore non valid SVG', async t => {
+	t.is(await m()('<html></html>'), '<html></html>');
 });

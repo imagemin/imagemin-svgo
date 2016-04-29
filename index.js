@@ -1,47 +1,28 @@
 'use strict';
+const isSvg = require('is-svg');
+const SVGO = require('svgo');
 
-var isSvg = require('is-svg');
-var SVGO = require('svgo');
-var through = require('through2');
+module.exports = opts => buf => {
+	opts = Object.assign({}, opts);
 
-module.exports = function (opts) {
-	opts = opts || {};
+	if (Buffer.isBuffer(buf)) {
+		buf = buf.toString();
+	}
 
-	return through.ctor({objectMode: true}, function (file, enc, cb) {
-		if (file.isNull()) {
-			cb(null, file);
-			return;
-		}
+	if (!isSvg(buf)) {
+		return Promise.resolve(buf);
+	}
 
-		if (file.isStream()) {
-			cb(new Error('Streaming is not supported'));
-			return;
-		}
+	const svgo = new SVGO(opts);
 
-		if (!isSvg(file.contents)) {
-			cb(null, file);
-			return;
-		}
+	return new Promise((resolve, reject) => {
+		svgo.optimize(buf, res => {
+			if (res.error) {
+				reject(new Error(res.error));
+				return;
+			}
 
-		try {
-			var svgo = new SVGO(opts);
-
-			svgo.optimize(file.contents.toString('utf8'), function (res) {
-				if (!res.data || !res.data.length) {
-					return;
-				}
-
-				res.data = res.data.replace(/&(?!amp;)/g, '&amp;');
-				res.data = new Buffer(res.data);
-
-				file.contents = res.data;
-			});
-		} catch (err) {
-			err.fileName = file.path;
-			cb(err);
-			return;
-		}
-
-		cb(null, file);
+			resolve(res.data.replace(/&(?!amp;)/g, '&amp;'));
+		});
 	});
 };
