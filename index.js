@@ -5,12 +5,12 @@ const SVGO = require('svgo');
 module.exports = opts => buf => {
 	opts = Object.assign({}, opts);
 
-	if (Buffer.isBuffer(buf)) {
-		buf = buf.toString();
-	}
-
 	if (!isSvg(buf)) {
 		return Promise.resolve(buf);
+	}
+
+	if (Buffer.isBuffer(buf)) {
+		buf = buf.toString();
 	}
 
 	const svgo = new SVGO(opts);
@@ -22,7 +22,7 @@ module.exports = opts => buf => {
 				return;
 			}
 
-			resolve(res.data.replace(/&(?!amp;)/g, '&amp;'));
+			resolve(new Buffer(res.data.replace(/&(?!amp;)/g, '&amp;')));
 		});
 	});
 };
