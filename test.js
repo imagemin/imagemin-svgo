@@ -2,7 +2,7 @@ import test from 'ava';
 import m from './';
 
 test('optimize a SVG', async t => {
-	t.is((await m()('<svg><style> circle {} </style></svg>')).toString(), '<svg><style></style></svg>');
+	t.is((await m()('<svg><style> circle {} </style></svg>')).toString(), '<svg><style/></svg>');
 });
 
 test('support SVGO options', async t => {
