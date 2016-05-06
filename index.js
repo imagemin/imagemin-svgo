@@ -3,7 +3,7 @@ const isSvg = require('is-svg');
 const SVGO = require('svgo');
 
 module.exports = opts => buf => {
-	opts = Object.assign({}, opts);
+	opts = Object.assign({multipass: true}, opts);
 
 	if (!isSvg(buf)) {
 		return Promise.resolve(buf);
