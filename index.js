@@ -22,7 +22,7 @@ module.exports = opts => buf => {
 				return;
 			}
 
-			resolve(new Buffer(res.data));
+			resolve(Buffer.from(res.data));
 		});
 	});
 };

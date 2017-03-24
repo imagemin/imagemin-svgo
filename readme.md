@@ -34,17 +34,17 @@ imagemin(['images/*.svg'], 'build/images', {
 
 ### imageminSvgo([options])(buffer)
 
-Returns a promise for a buffer.
+Returns a `Promise<Buffer>`.
 
 #### options
 
-Type: `object`
+Type: `Object`
 
 Pass options to [SVGO](https://github.com/svg/svgo#what-it-can-do).
 
 #### buffer
 
-Type: `buffer`
+Type: `Buffer`
 
 Buffer to optimize.
 

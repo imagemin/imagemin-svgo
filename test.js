@@ -1,5 +1,5 @@
 import test from 'ava';
-import m from './';
+import m from '.';
 
 test('optimize a SVG', async t => {
 	t.is((await m()('<svg><style> circle {} </style></svg>')).toString(), '<svg><style/></svg>');
@@ -15,7 +15,7 @@ test('support SVGO options', async t => {
 	t.is(data, '<svg/>');
 });
 
-test('error on corrupt SVG', async t => {
+test('error on corrupt SVG', t => {
 	t.throws(m()('<svg>style><</style></svg>'), /Error in parsing SVG/);
 });
 
