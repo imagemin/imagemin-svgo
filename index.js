@@ -17,7 +17,7 @@ module.exports = opts => buf => {
 
 	return new Promise((resolve, reject) => {
 		svgo.optimize(buf)
-		.then((res) => {
+		.then(res => {
 			if (res.error) {
 				reject(new Error(res.error));
 				return;
