@@ -22,7 +22,7 @@ module.exports = opts => buf => {
 				return;
 			}
 
-			resolve(Buffer.from(res.data));
+			resolve(new Buffer(res.data)); // eslint-disable-line unicorn/no-new-buffer
 		});
 	});
 };
