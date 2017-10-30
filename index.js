@@ -15,14 +15,5 @@ module.exports = opts => buf => {
 
 	const svgo = new SVGO(opts);
 
-	return new Promise((resolve, reject) => {
-		svgo.optimize(buf, res => {
-			if (res.error) {
-				reject(new Error(res.error));
-				return;
-			}
-
-			resolve(new Buffer(res.data)); // eslint-disable-line unicorn/no-new-buffer
-		});
-	});
+	return svgo.optimize(buf).then(res => Buffer.from(res.data));
 };
