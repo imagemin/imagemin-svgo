@@ -15,15 +15,5 @@ module.exports = opts => buf => {
 
 	const svgo = new SVGO(opts);
 
-	return new Promise((resolve, reject) => {
-		svgo.optimize(buf)
-		.then(res => {
-			if (res.error) {
-				reject(new Error(res.error));
-				return;
-			}
-
-			resolve(Buffer.from(res.data));
-		});
-	});
+	return svgo.optimize(buf).then(res => Buffer.from(res.data));
 };
