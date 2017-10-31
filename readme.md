@@ -6,7 +6,7 @@
 ## Install
 
 ```
-$ npm install --save imagemin-svgo
+$ npm install imagemin-svgo
 ```
 
 
