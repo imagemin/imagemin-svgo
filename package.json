@@ -40,6 +40,7 @@
     "svgo"
   ],
   "dependencies": {
+    "buffer-from": "^0.1.1",
     "is-svg": "^2.0.0",
     "svgo": "^1.0.0"
   },
