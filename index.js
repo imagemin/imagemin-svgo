@@ -1,5 +1,4 @@
 'use strict';
-const bufferFrom = require('buffer-from');
 const isSvg = require('is-svg');
 const SVGO = require('svgo');
 
@@ -16,6 +15,14 @@ module.exports = opts => buf => {
 
 	const svgo = new SVGO(opts);
 
-	// TODO: Use `Buffer.from` when targeting Node.js >=6
-	return svgo.optimize(buf).then(res => bufferFrom(res.data));
+	return new Promise((resolve, reject) => {
+		svgo.optimize(buf, res => {
+			if (res.error) {
+				reject(new Error(res.error));
+				return;
+			}
+
+			resolve(new Buffer(res.data)); // eslint-disable-line unicorn/no-new-buffer
+		});
+	});
 };
