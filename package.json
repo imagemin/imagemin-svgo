@@ -21,7 +21,7 @@
 		}
 	],
 	"engines": {
-		"node": ">=4"
+		"node": ">=6"
 	},
 	"scripts": {
 		"test": "xo && ava"
@@ -40,8 +40,7 @@
 		"svgo"
 	],
 	"dependencies": {
-		"buffer-from": "^0.1.1",
-		"is-svg": "^2.0.0",
+		"is-svg": "^3.0.0",
 		"svgo": "^1.0.0"
 	},
 	"devDependencies": {
