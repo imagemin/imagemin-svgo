@@ -16,17 +16,19 @@ $ npm install imagemin-svgo
 const imagemin = require('imagemin');
 const imageminSvgo = require('imagemin-svgo');
 
-imagemin(['images/*.svg'], 'build/images', {
-	use: [
-		imageminSvgo({
-			plugins: [
-				{removeViewBox: false}
-			]
-		})
-	]
-}).then(() => {
+(async () => {
+	await imagemin(['images/*.svg'], 'build/images', {
+		use: [
+			imageminSvgo({
+				plugins: [
+					{removeViewBox: false}
+				]
+			})
+		]
+	});
+
 	console.log('Images optimized');
-});
+})();
 ```
 
 

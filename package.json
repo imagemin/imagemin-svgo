@@ -4,22 +4,6 @@
 	"description": "SVGO imagemin plugin",
 	"license": "MIT",
 	"repository": "imagemin/imagemin-svgo",
-	"author": {
-		"name": "Kevin Mårtensson",
-		"email": "kevinmartensson@gmail.com",
-		"url": "github.com/kevva"
-	},
-	"maintainers": [
-		{
-			"name": "Sindre Sorhus",
-			"email": "sindresorhus@gmail.com",
-			"url": "sindresorhus.com"
-		},
-		{
-			"name": "Shinnosuke Watanabe",
-			"url": "github.com/shinnn"
-		}
-	],
 	"engines": {
 		"node": ">=6"
 	},
@@ -41,7 +25,7 @@
 	],
 	"dependencies": {
 		"is-svg": "^3.0.0",
-		"svgo": "^1.0.0"
+		"svgo": "^1.0.5"
 	},
 	"devDependencies": {
 		"ava": "*",
