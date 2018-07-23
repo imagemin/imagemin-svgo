@@ -40,7 +40,7 @@
 		"svgo"
 	],
 	"dependencies": {
-		"is-svg": "^2.0.0",
+		"is-svg": "^3.0.0",
 		"svgo": "^1.0.0"
 	},
 	"devDependencies": {
