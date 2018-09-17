@@ -14,5 +14,5 @@ module.exports = options => buffer => {
 	}
 
 	const svgo = new SVGO(options);
-	return svgo.optimize(buffer).then(result => Buffer.from(result.data));
+	return svgo.optimize(buffer, {}).then(result => Buffer.from(result.data));
 };
