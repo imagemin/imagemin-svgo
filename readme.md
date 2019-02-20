@@ -1,4 +1,4 @@
-# imagemin-svgo [![Build Status](https://travis-ci.org/imagemin/imagemin-svgo.svg?branch=master)](https://travis-ci.org/imagemin/imagemin-svgo) [![Build status](https://ci.appveyor.com/api/projects/status/esa7m3u8bcol1mtr/branch/master?svg=true)](https://ci.appveyor.com/project/ShinnosukeWatanabe/imagemin-svgo/branch/master)
+# imagemin-svgo [![Build Status](https://travis-ci.org/imagemin/imagemin-svgo.svg?branch=master)](https://travis-ci.org/imagemin/imagemin-svgo)
 
 > [SVGO](https://github.com/svg/svgo) imagemin plugin
 
