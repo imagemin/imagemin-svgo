@@ -6,7 +6,7 @@
 	"repository": "imagemin/imagemin-svgo",
 	"funding": "https://github.com/sindresorhus/imagemin-svgo?sponsor=1",
 	"engines": {
-		"node": ">=6"
+		"node": ">=10"
 	},
 	"scripts": {
 		"test": "xo && ava"
@@ -28,7 +28,7 @@
 		"svgo": "^1.3.2"
 	},
 	"devDependencies": {
-		"ava": "^1.0.0",
-		"xo": "^0.20.0"
+		"ava": "^3.8.0",
+		"xo": "^0.30.0"
 	}
 }
