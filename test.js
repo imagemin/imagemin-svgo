@@ -1,6 +1,5 @@
-/* eslint-disable ava/use-t-well */
-import test from 'ava';
-import imageminSvgo from '.';
+const test = require('ava');
+const imageminSvgo = require('.');
 
 test('optimize a SVG', async t => {
 	t.is((await imageminSvgo()('<svg><style> circle {} </style></svg>')).toString(), '<svg><style/></svg>');

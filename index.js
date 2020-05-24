@@ -2,8 +2,8 @@
 const isSvg = require('is-svg');
 const SVGO = require('svgo');
 
-module.exports = options => buffer => {
-	options = Object.assign({multipass: true}, options);
+module.exports = options => async buffer => {
+	options = {multipass: true, ...options};
 
 	if (!isSvg(buffer)) {
 		return Promise.resolve(buffer);
@@ -14,5 +14,6 @@ module.exports = options => buffer => {
 	}
 
 	const svgo = new SVGO(options);
-	return svgo.optimize(buffer).then(result => Buffer.from(result.data));
+	const {data} = await svgo.optimize(buffer);
+	return Buffer.from(data);
 };
