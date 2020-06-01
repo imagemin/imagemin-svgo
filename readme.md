@@ -17,8 +17,9 @@ const imagemin = require('imagemin');
 const imageminSvgo = require('imagemin-svgo');
 
 (async () => {
-	await imagemin(['images/*.svg'], 'build/images', {
-		use: [
+	await imagemin(['images/*.svg'], {
+		destination: 'build/images',
+		plugins: [
 			imageminSvgo({
 				plugins: [
 					{removeViewBox: false}
