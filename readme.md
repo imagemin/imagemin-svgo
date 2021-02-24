@@ -15,15 +15,16 @@ $ npm install imagemin-svgo
 ```js
 const imagemin = require('imagemin');
 const imageminSvgo = require('imagemin-svgo');
+const {extendDefaultPlugins} = require('svgo');
 
 (async () => {
 	await imagemin(['images/*.svg'], {
 		destination: 'build/images',
 		plugins: [
 			imageminSvgo({
-				plugins: [
-					{removeViewBox: false}
-				]
+				plugins: extendDefaultPlugins([
+					{name: 'removeViewBox', active: false}
+				])
 			})
 		]
 	});
@@ -43,7 +44,7 @@ Returns a `Promise<Buffer>`.
 
 Type: `Object`
 
-Pass options to [SVGO](https://github.com/svg/svgo#what-it-can-do).
+Pass options to [SVGO](https://github.com/svg/svgo#configuration).
 
 #### buffer
 

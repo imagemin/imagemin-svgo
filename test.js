@@ -1,5 +1,6 @@
 const test = require('ava');
 const imageminSvgo = require('.');
+const {extendDefaultPlugins} = require('svgo');
 
 test('optimize a SVG', async t => {
 	t.is((await imageminSvgo()('<svg><style> circle {} </style></svg>')).toString(), '<svg><style/></svg>');
@@ -7,9 +8,9 @@ test('optimize a SVG', async t => {
 
 test('support SVGO options', async t => {
 	const data = (await imageminSvgo({
-		plugins: [{
-			removeStyleElement: true
-		}]
+		plugins: extendDefaultPlugins([{
+			name: 'removeStyleElement'
+		}])
 	})('<svg><style> circle {} </style></svg>')).toString();
 
 	t.is(data, '<svg/>');
