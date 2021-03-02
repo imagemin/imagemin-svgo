@@ -1,4 +1,4 @@
-# imagemin-svgo [![Build Status](https://travis-ci.org/imagemin/imagemin-svgo.svg?branch=master)](https://travis-ci.org/imagemin/imagemin-svgo)
+# imagemin-svgo ![GitHub Actions Status](https://github.com/imagemin/imagemin-svgo/workflows/test/badge.svg?branch=master)
 
 > [SVGO](https://github.com/svg/svgo) imagemin plugin
 
