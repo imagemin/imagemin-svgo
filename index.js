@@ -1,8 +1,8 @@
-'use strict';
-const isSvg = require('is-svg');
-const {optimize} = require('svgo');
+import {Buffer} from 'node:buffer';
+import isSvg from 'is-svg';
+import {optimize} from 'svgo';
 
-module.exports = options => async buffer => {
+const imageminSvgo = options => async buffer => {
 	options = {multipass: true, ...options};
 
 	if (!isSvg(buffer)) {
@@ -16,3 +16,5 @@ module.exports = options => async buffer => {
 	const {data} = optimize(buffer, options);
 	return Buffer.from(data);
 };
+
+export default imageminSvgo;

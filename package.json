@@ -4,11 +4,12 @@
 	"description": "SVGO imagemin plugin",
 	"license": "MIT",
 	"repository": "imagemin/imagemin-svgo",
+	"type": "module",
 	"funding": {
 		"url": "https://github.com/sindresorhus/imagemin-svgo?sponsor=1"
 	},
 	"engines": {
-		"node": ">=10"
+		"node": ">=12.20"
 	},
 	"scripts": {
 		"test": "xo && ava"
@@ -26,11 +27,11 @@
 		"svgo"
 	],
 	"dependencies": {
-		"is-svg": "^4.2.1",
-		"svgo": "^2.1.0"
+		"is-svg": "^4.3.1",
+		"svgo": "^2.5.0"
 	},
 	"devDependencies": {
-		"ava": "^3.8.0",
-		"xo": "^0.30.0"
+		"ava": "^3.15.0",
+		"xo": "^0.44.0"
 	}
 }

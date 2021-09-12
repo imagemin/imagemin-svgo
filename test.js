@@ -1,17 +1,21 @@
-const test = require('ava');
-const imageminSvgo = require('.');
-const {extendDefaultPlugins} = require('svgo');
+import test from 'ava';
+import imageminSvgo from './index.js';
 
 test('optimize a SVG', async t => {
-	t.is((await imageminSvgo()('<svg><style> circle {} </style></svg>')).toString(), '<svg><style/></svg>');
+	const data = (await imageminSvgo()('<svg><script></script></svg>')).toString();
+
+	t.is(data, '<svg><script/></svg>');
 });
 
 test('support SVGO options', async t => {
 	const data = (await imageminSvgo({
-		plugins: extendDefaultPlugins([{
-			name: 'removeStyleElement'
-		}])
-	})('<svg><style> circle {} </style></svg>')).toString();
+		plugins: [{
+			name: 'preset-default',
+		}, {
+			name: 'removeScriptElement',
+			active: true,
+		}],
+	})('<svg><script></script></svg>')).toString();
 
 	t.is(data, '<svg/>');
 });
