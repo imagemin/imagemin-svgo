@@ -13,18 +13,18 @@ $ npm install imagemin-svgo
 ## Usage
 
 ```js
-const imagemin = require('imagemin');
-const imageminSvgo = require('imagemin-svgo');
-const {extendDefaultPlugins} = require('svgo');
+import imagemin from 'imagemin';
+import imageminSvgo from 'imagemin-svgo';
 
 (async () => {
 	await imagemin(['images/*.svg'], {
 		destination: 'build/images',
 		plugins: [
 			imageminSvgo({
-				plugins: extendDefaultPlugins([
-					{name: 'removeViewBox', active: false}
-				])
+				plugins: [{
+					name: 'removeViewBox',
+					active: false
+				}]
 			})
 		]
 	});
