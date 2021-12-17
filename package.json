@@ -5,6 +5,7 @@
 	"license": "MIT",
 	"repository": "imagemin/imagemin-svgo",
 	"type": "module",
+	"exports": "./index.js",
 	"funding": {
 		"url": "https://github.com/sindresorhus/imagemin-svgo?sponsor=1"
 	},
