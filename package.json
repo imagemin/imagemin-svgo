@@ -1,11 +1,11 @@
 {
 	"name": "imagemin-svgo",
-	"version": "10.0.1",
+	"version": "10.0.2",
 	"description": "SVGO imagemin plugin",
 	"license": "MIT",
 	"repository": "imagemin/imagemin-svgo",
 	"type": "module",
-	"exports": "./index.js",
+	"exports": "./index.cjs",
 	"funding": {
 		"url": "https://github.com/sindresorhus/imagemin-svgo?sponsor=1"
 	},
