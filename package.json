@@ -16,7 +16,7 @@
 		"test": "xo && ava"
 	},
 	"files": [
-		"index.js"
+		"index.cjs"
 	],
 	"keywords": [
 		"compress",
