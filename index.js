@@ -2,7 +2,7 @@ import {Buffer} from 'node:buffer';
 import isSvg from 'is-svg';
 import {optimize} from 'svgo';
 
-export const imageminSvgo = options => async buffer => {
+export const imageminSvgo = options => buffer => {
 	options = {multipass: true, ...options};
 
 	if (!isSvg(buffer)) {
