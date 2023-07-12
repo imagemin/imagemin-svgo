@@ -2,9 +2,9 @@ import test from 'ava';
 import imageminSvgo from './index.js';
 
 test('optimize a SVG', async t => {
-	const data = (await imageminSvgo()('<svg><script></script></svg>')).toString();
+	const data = await imageminSvgo()('<svg><script></script></svg>');
 
-	t.is(data, '<svg><script/></svg>');
+	t.is(data.toString(), '<svg><script/></svg>');
 });
 
 test('support SVGO options', async t => {
@@ -15,9 +15,9 @@ test('support SVGO options', async t => {
 			name: 'removeScriptElement',
 			active: true,
 		}],
-	})('<svg><script></script></svg>')).toString();
+	})('<svg><script></script></svg>'));
 
-	t.is(data, '<svg/>');
+	t.is(data.toString(), '<svg/>');
 });
 
 // Failing as SVGO doesn't throw proper errors...
