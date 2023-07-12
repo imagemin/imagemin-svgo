@@ -1,5 +1,5 @@
 {
-	"name": "imagemin-svgo",
+	"name": "@koddsson/imagemin-svgo",
 	"version": "10.0.1",
 	"description": "SVGO imagemin plugin",
 	"license": "MIT",
@@ -7,10 +7,10 @@
 	"type": "module",
 	"exports": "./index.js",
 	"funding": {
-		"url": "https://github.com/sindresorhus/imagemin-svgo?sponsor=1"
+		"url": "https://github.com/koddsson/imagemin-svgo?sponsor=1"
 	},
 	"engines": {
-		"node": ">=12.20"
+		"node": ">=16"
 	},
 	"scripts": {
 		"test": "xo && ava"
