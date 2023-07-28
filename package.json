@@ -10,7 +10,7 @@
 		"url": "https://github.com/sindresorhus/imagemin-svgo?sponsor=1"
 	},
 	"engines": {
-		"node": ">=12.20"
+		"node": ">=16"
 	},
 	"scripts": {
 		"test": "xo && ava"
@@ -28,11 +28,11 @@
 		"svgo"
 	],
 	"dependencies": {
-		"is-svg": "^4.3.1",
-		"svgo": "^2.5.0"
+		"is-svg": "^5.0.0",
+		"svgo": "^3.0.0"
 	},
 	"devDependencies": {
-		"ava": "^3.15.0",
-		"xo": "^0.44.0"
+		"ava": "^5.3.1",
+		"xo": "^0.55.0"
 	}
 }

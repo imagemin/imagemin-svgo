@@ -1,4 +1,4 @@
-# imagemin-svgo ![GitHub Actions Status](https://github.com/imagemin/imagemin-svgo/workflows/test/badge.svg?branch=master)
+# imagemin-svgo ![GitHub Actions Status](https://github.com/imagemin/imagemin-svgo/workflows/test/badge.svg?branch=main)
 
 > [SVGO](https://github.com/svg/svgo) imagemin plugin
 

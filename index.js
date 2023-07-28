@@ -6,7 +6,7 @@ const imageminSvgo = options => async buffer => {
 	options = {multipass: true, ...options};
 
 	if (!isSvg(buffer)) {
-		return Promise.resolve(buffer);
+		return buffer;
 	}
 
 	if (Buffer.isBuffer(buffer)) {
