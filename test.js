@@ -1,5 +1,5 @@
 import test from 'ava';
-import imageminSvgo from './index.js';
+import imageminSvgo from './index.cjs';
 
 test('optimize a SVG', async t => {
 	const buffer = await imageminSvgo()('<svg><script></script></svg>');
