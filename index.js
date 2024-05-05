@@ -3,7 +3,10 @@ import isSvg from 'is-svg';
 import {optimize} from 'svgo';
 
 const imageminSvgo = options => async buffer => {
-	options = {multipass: true, ...options};
+	options = {
+		multipass: true,
+		...options,
+	};
 
 	if (!isSvg(buffer)) {
 		return buffer;

@@ -2,13 +2,11 @@
 
 > [SVGO](https://github.com/svg/svgo) imagemin plugin
 
-
 ## Install
 
+```sh
+npm install imagemin-svgo
 ```
-$ npm install imagemin-svgo
-```
-
 
 ## Usage
 
@@ -16,33 +14,30 @@ $ npm install imagemin-svgo
 import imagemin from 'imagemin';
 import imageminSvgo from 'imagemin-svgo';
 
-(async () => {
-	await imagemin(['images/*.svg'], {
-		destination: 'build/images',
-		plugins: [
-			imageminSvgo({
-				plugins: [{
-					name: 'removeViewBox',
-					active: false
-				}]
-			})
-		]
-	});
+await imagemin(['images/*.svg'], {
+	destination: 'build/images',
+	plugins: [
+		imageminSvgo({
+			plugins: [{
+				name: 'removeViewBox',
+				active: false
+			}]
+		})
+	]
+});
 
-	console.log('Images optimized');
-})();
+console.log('Images optimized');
 ```
-
 
 ## API
 
-### imageminSvgo([options])(buffer)
+### imageminSvgo(options?)(buffer)
 
 Returns a `Promise<Buffer>`.
 
 #### options
 
-Type: `Object`
+Type: `object`
 
 Pass options to [SVGO](https://github.com/svg/svgo#configuration).
 
@@ -50,9 +45,4 @@ Pass options to [SVGO](https://github.com/svg/svgo#configuration).
 
 Type: `Buffer`
 
-Buffer to optimize.
-
-
-## License
-
-MIT © [imagemin](https://github.com/imagemin)
+The buffer to optimize.
