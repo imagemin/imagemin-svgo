@@ -8,7 +8,7 @@ const imageminSvgo = options => async buffer => {
 		...options,
 	};
 
-	if (!isSvg(buffer)) {
+	if (!isSvg(Buffer.isBuffer(buffer) ? buffer.toString() : buffer)) {
 		return buffer;
 	}
 
