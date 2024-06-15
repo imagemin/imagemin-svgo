@@ -8,15 +8,13 @@ const imageminSvgo = options => async buffer => {
 		...options,
 	};
 
-	if (!isSvg(buffer)) {
+	const normalizedInput = Buffer.isBuffer(buffer) ? buffer.toString() : buffer;
+
+	if (!isSvg(normalizedInput)) {
 		return buffer;
 	}
 
-	if (Buffer.isBuffer(buffer)) {
-		buffer = buffer.toString();
-	}
-
-	const {data} = optimize(buffer, options);
+	const {data} = optimize(normalizedInput, options);
 	return Buffer.from(data);
 };
 
